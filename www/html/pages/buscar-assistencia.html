@@ -1,0 +1,94 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="icon-only back"> <i class="ion-ios-arrow-back texto-branco fonte-30"></i></a>
+        </div>
+        <div class="center sliding"><a href="index.html" class="texto-branco">Buscar Assistência</a></div>
+    </div>
+</div>
+
+<div class="pages navbar-through toolbar-through" ng-app="MyApp">
+    <div data-page="buscar-assistencia" class="page cached" ng-controller="BuscarAssistenciaPageController">
+        <div class="page-content" id="fundo-principal">
+            <!-- não mudar daqui pra cima -->
+            <div class="list-block">
+                <div class="row no-gutter">
+                    <div class="col-10"></div>
+                    <div class="col-80">
+                        <ul class="estilo-select">
+                            <li>
+                                <!-- Smart select, will be opened in Popup -->
+                                <a href="#" class="item-link smart-select" data-open-in="popup"
+                                   data-back-on-select="true">
+                                    <select name="Estado">
+                                        <option value="apple" selected>Escolha seu estado</option>
+                                        <option value="pineapple">Pineapple</option>
+                                        <option value="dadadadadadadad ad adasdsddsad">dadadadadadadad ad adasdsddsad
+                                        </option>
+                                    </select>
+
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <!-- Select label -->
+                                            <div class="item-title"><i
+                                                    class="icon ion-android-checkmark-circle texto-verde fonte-30"></i>
+                                            </div>
+                                            <!-- Selected value, not required -->
+                                            <div class="item-after">Apple</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-10"></div>
+                </div>
+            </div>
+
+            <div class="list-block">
+                <div class="row no-gutter">
+                    <div class="col-10"></div>
+                    <div class="col-80">
+                        <ul class="estilo-select">
+                            <li>
+                                <!-- Smart select, will be opened in Popup with custom "Close" text -->
+                                <a href="#" class="item-link smart-select" data-open-in="popup"
+                                   data-back-on-select="true">
+                                    <select name="Cidade">
+                                        <option value="apple" selected>Escolha sua cidade</option>
+                                        <option value="moto">moto</option>
+                                        <option value="carro">carro</option>
+                                        <option value="aviao">avoão</option>
+                                    </select>
+
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <!-- Select label -->
+                                            <div class="item-title"><i
+                                                    class="icon ion-android-checkmark-circle texto-verde fonte-30"></i>
+                                            </div>
+                                            <!-- Selected value, not required -->
+                                            <div class="item-after">Apple</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-10"></div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-100 tablet-50">
+                        <a href="lista-de-assistencia.html" class="button button-big borda-branco btn_fixo_rodape">Buscar
+                            por assistência <i class="ion-chevron-right icon-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- não mudar daqui pra baixo  -->
+        </div>
+    </div>
+</div>

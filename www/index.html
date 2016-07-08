@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.4.2/css/framework7.ios.min.css">
+    <!--  <link rel="stylesheet" type="text/css" href="framework7/css/framework7.ios.min.css">-->
+    <title>Blank App Designer Cordova Web App Project Template</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+    <style>
+        /* following three (cascaded) are equivalent to above three meta viewport statements */
+        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+        /* see http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport {
+            width: 100vw ;
+            min-zoom: 100% ;
+            zoom: 100% ;
+        }
+
+        @viewport {
+            width: 100vw ;
+            min-zoom: 100% zoom: 100% ;
+        }
+
+        @-ms-viewport {
+            user-zoom: fixed ;
+            min-zoom: 100% ;
+        }
+
+        @viewport {
+            user-zoom: fixed ;
+            min-zoom: 100% ;
+        }
+
+        /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+    </style>
+
+
+    <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+    <link rel="stylesheet" href="framework7/css/my-app.css">
+    <link rel="stylesheet" href="icons/css/ionicons.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body ng-app="MyApp">
+
+<!-- Views-->
+<div class="views">
+    <!-- Your main view, should have "view-main" class-->
+    <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="#" class="icon-only open-popup" data-popup="#menu-principal">
+						<i class="ion-android-menu fonte-40"></i>
+					</a>
+                </div>
+                <div class="center sliding">
+					<a href="index.html" class="texto-branco">Reclamações</a>
+				</div>
+            </div>
+        </div>
+		
+		<!-- Pages -->
+        <div class="pages navbar-through toolbar-through">
+			<!-- Page 1 -->
+            <div data-page="index" class="page" ng-controller="IndexPageController">
+				<!-- Page content-->
+                <div class="page-content" id="fundo-principal">
+                    <!-- não muda daqui pra cima -->
+                    <div class="content-block">
+                        <div class="row">
+                            <div class="col-100 tablet-50">
+                                <div class="texto-inicio">
+                                    <img src="img/logo.png" class="img-logo"/>
+
+                                    <h2 class="texto-branco font-titulo-1">Bem vindo ao AssisTec</h2>
+                                    <h4 class="texto-branco font-texto-1 texto-italico espessura200">
+										Vamos te ajudar a encontrar uma assistência técnica ou autorizada mais perto de você.
+									</h4>
+                                    <a href="#" class="button button-round btn-compartilhar"
+                                       ng-click="compartilharApp()">
+										<i class="icon ion-android-share texto-verde fonte-20"></i> Compartilhe
+									</a>
+                                </div>
+                            </div>
+                            <div class="col-100 tablet-50">
+                                <a href="#buscar-assistencia" class="button button-big borda-branco btn_fixo_rodape">
+									Iniciar busca <i class="ion-chevron-right icon-right"></i>
+								</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- nao muda daqui pra baixo  -->
+                </div>
+            </div>
+			
+			<!-- Page 2 -->
+            <div data-page="buscar-assistencia" class="page cached" ng-controller="BuscarAssistenciaPageController">
+                <div class="page-content" id="">
+                    <!-- não mudar daqui pra cima -->
+                    <div class="list-block">
+                        <div class="row no-gutter">
+                            <div class="col-10"></div>
+                            <div class="col-80">
+                                <ul class="estilo-select">
+                                    <li>
+                                        <!-- Smart select, will be opened in Popup -->
+                                        <a href="#" class="item-link smart-select" data-open-in="popup"
+                                           data-back-on-select="true">
+                                            <select name="Estado">
+                                                <option>Escolha seu estado</option>
+                                                <option ng-repeat="state in states" value="{{state.sigla}}">{{state.nome}}</option>
+                                            </select>
+
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <!-- Select label -->
+                                                    <div class="item-title"><i
+                                                            class="icon ion-android-checkmark-circle texto-verde fonte-30"></i>
+                                                    </div>
+                                                    <!-- Selected value, not required -->
+                                                    <div class="item-after">Apple</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-10"></div>
+                        </div>
+                    </div>
+
+                    <div class="list-block">
+                        <div class="row no-gutter">
+                            <div class="col-10"></div>
+                            <div class="col-80">
+                                <ul class="estilo-select">
+                                    <li>
+                                        <!-- Smart select, will be opened in Popup with custom "Close" text -->
+                                        <a href="#" class="item-link smart-select" data-open-in="popup"
+                                           data-back-on-select="true">
+                                            <select name="Cidade">
+                                                <option>Escolha sua cidade</option>
+                                                <option ng-repeat="city in cities" value="{{city.id}}">{{city.nome}}</option>
+                                            </select>
+
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <!-- Select label -->
+                                                    <div class="item-title"><i
+                                                            class="icon ion-android-checkmark-circle texto-verde fonte-30"></i>
+                                                    </div>
+                                                    <!-- Selected value, not required -->
+                                                    <div class="item-after">Apple</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-10"></div>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <div class="row">
+                            <div class="col-100 tablet-50">
+                                <a href="#lista-de-assistencia" class="button button-big borda-branco btn_fixo_rodape">Buscar
+                                    por assistência <i class="ion-chevron-right icon-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 3 -->
+            <div data-page="lista-de-assistencia" class="page cached" ng-controller="ListaAssistenciaPageController">
+                <div class="page-content" id="">
+                    <!-- Search Bar with "searchbar-init" class for auto initialization -->
+                    <form class="searchbar searchbar-init" data-search-list=".list-block-search" data-search-in=".item-title"
+                          data-found=".searchbar-found" data-not-found=".searchbar-not-found">
+                        <div class="searchbar-input">
+                            <input type="search" placeholder="Buscar assistência">
+                            <a href="#" class="searchbar-clear"></a>
+                        </div>
+                        <a href="#" class="searchbar-cancel texto-branco">Cancelar</a>
+                    </form>
+
+                    <div class="searchbar-overlay"></div>
+
+                    <div class="content-block searchbar-not-found">
+                        Nenhuma assistência foi encontrada!
+                    </div>
+                    <!-- inicio bloco de anunciantes -->
+                    <div class="list-block list-block-search searchbar-found media-list inset">
+                        <ul class="espaco-entre-listas">
+                            <li>
+                                <a href="assistencia-escolhida.html" class="item-link item-content">
+                                    <div class="item-media"><img src="img/anunciantes/assistec.png" width="44"></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title cor-titulo"><b>Assistec - Assistência técnica sp</b></div>
+                                        </div>
+                                        <div class="item-subtitle item-descricao">Assistência para computadores e celulares
+                                        </div>
+                                        <div class="item-title item-descricao">Bairro: Vila Cardim</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="espaco-entre-listas">
+                            <li>
+                                <a href="assistencia-escolhida.html" class="item-link item-content">
+                                    <div class="item-media"><img src="img/anunciantes/assistencia.jpg" width="44"></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title cor-titulo"><b>Arruma já - Autorizada RJ</b></div>
+                                        </div>
+                                        <div class="item-subtitle item-descricao">Assistência para computadores e celulares
+                                        </div>
+                                        <div class="item-title item-descricao">Bairro: Niteroi</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- FIM bloco de anunciantes -->
+                    <!-- inicio bloco de NÃO anunciantes -->
+                    <div class="list-block list-block-search searchbar-found media-list inset">
+                        <ul>
+                            <li ng-repeat="support in supports">
+                                <a href="assistencia-escolhida.html" class="item-link item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title cor-titulo"><b>{{ support.nome }}</b></div>
+                                        </div>
+                                        <div class="item-subtitle item-descricao">{{ support.descricao }}</div>
+                                        <div class="item-title item-descricao">Bairro: {{ support.bairro }}</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- FIM bloco de NÃO anunciantes -->
+                </div>
+            </div>
+
+
+            <!-- Page 4 -->
+            <div data-page="assistencia-escolhida" class="page cached">
+                <div class="page-content">
+                    <div class="page-header-small" style="background-image:url('img/capa-assistencia/01.jpg')"></div>
+                    <div class="content-block margin-top-0">
+                        <div class="content-block-inner">
+                            <div class="row no-gutter">
+                                <div class="col-75">
+                                    <h3>João Assistência Técnica São Paulo</h3>
+                                </div>
+                                <div class="col-25">
+                                    <img src="img/anunciantes/assistec.png" width="90%">
+                                </div>
+                            </div>
+                            <div class="list-block media-list">
+                                <ul>
+                                    <li>
+                                        <div class="item-content">
+
+                                            <div class="item-inner">
+                                                <div class="item-title-row">
+                                                    <div class="texto-descricao">Descrição:</div>
+                                                </div>
+                                                <div class="item-subtitle quebra-linha">Assistência técnica para computadores
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+
+                                            <div class="item-inner">
+                                                <div class="item-title-row">
+                                                    <div class="texto-descricao">Endereço:</div>
+                                                </div>
+                                                <div class="item-subtitle quebra-linha">Av. Antonio Silva de Oliveira Néto, 255,
+                                                    São José, Matão - SP
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+
+                                            <div class="item-inner">
+                                                <div class="item-title-row">
+                                                    <div class="texto-descricao">Telefone</div>
+                                                </div>
+                                                <div class="item-subtitle quebra-linha">(16) 9.9730-881 / (16) 3506-1889</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="buttons-row theme-pink">
+                                <a href="#" class="button active btn-social"><span
+                                        class="ion-android-globe fonte-25"></span></a>
+                                <a href="#" class="button btn-social"><span
+                                        class="ion-social-facebook texto-verde fonte-25"></span></a>
+                                <a href="#" class="button btn-social"><span
+                                        class="ion-social-whatsapp texto-verde fonte-25"></span></a>
+                                <a href="#" class="button btn-social"><span class="ion-email texto-verde fonte-30"></span></a>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="content-block margin-top-0">
+                        <div class="content-block-inner">
+                            <div class="card-content">
+                                <div class="card-content-inner">
+                                    <div class="texto-descricao">Sobre:</div>
+                                    This is simple card with plain text. But card could contain its own header, footer, list
+                                    view, image, and any elements inside.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Inicio MENU -->
+<div class="popup tablet-fullscreen fundo-menu" id="menu-principal">
+    <div class="content-block">
+        <div class="btn-fechar-menu"><a href="#" class="close-popup texto-branco"><i class="ion-ios-close-outline"></i></a>
+        </div>
+        <div class="row linha-menu">
+            <div class="col-50 nome-menu">
+				<a href="buscar-assistencia.html" class="close-popup">
+					<i class="ion-ios-search fonte-60"></i><br>Buscar Assistência
+				</a>
+			</div>
+            <div class="col-50 nome-menu">
+				<a href="lista-de-assistencia.html" class="close-popup">
+					<i class="ion-ios-telephone-outline fonte-60"></i><br>Fale com o fabricante
+				</a>
+			</div>
+        </div>
+        <br><br>
+
+        <div class="row linha-menu">
+            <div class="col-50 nome-menu">
+				<a href="entre-contato.html" class="close-popup">
+					<i class="ion-ios-email-outline fonte-60"></i><br>Fale conosco
+				</a>
+			</div>
+            <div class="col-50 nome-menu">
+				<a href="lista-de-assistencia.html" class="close-popup">
+					<i class="ion-ios-information-outline fonte-60"></i><br>Sobre o Assistec
+				</a>
+			</div>
+        </div>
+        <br><br>
+
+        <div class="row linha-menu">
+            <div class="col-50 nome-menu">
+				<a href="buscar-assistencia.html" class="close-popup">
+					<i class="ion-ios-redo-outline fonte-60"></i><br>Compartilhar
+				</a>
+			</div>
+            <div class="col-50 nome-menu">
+				<a href="lista-de-assistencia.html" class="close-popup">
+					<i class="ion-ios-people-outline fonte-60"></i><br>Anuncie sua loja
+				</a>
+			</div>
+        </div>
+    </div>
+</div>
+<!-- FIM do MENU -->
+
+	<!-- Scripts -->	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/framework7/1.4.2/js/framework7.min.js"></script>
+
+	<script src="cordova.js" id="xdkJScordova_"></script>
+<!--	<script type="application/javascript" src="lib/jquery.min.js"></script>-->
+	<!--  <script type="application/javascript" src="framework7/js/framework7.min.js"></script>-->
+<!--	<script type="text/javascript" src="framework7/my-app.js"></script>-->
+	<script type="text/javascript" src="js/config.js"></script>
+	<script type="text/javascript" src="js/service/InitService.js"></script>
+	<script type="text/javascript" src="js/service/DataService.js"></script>
+	<script type="text/javascript" src="js/controller/IndexPageController.js"></script>
+	<script type="text/javascript" src="js/controller/DetailPageController.js"></script>
+	<script type="text/javascript" src="js/controller/BuscarAssistenciaPageController.js"></script>
+	<script type="text/javascript" src="js/controller/ListaAssistenciaPageController.js"></script>
+<!--	<script src="js/app.js"></script>-->
+<!--	<script src="js/init-app.js"></script>-->
+<!--	<script src="xdk/init-dev.js"></script>-->
+	
+	<!-- normalizes device and document ready events, see file for details -->
+
+</body>
+</html>
