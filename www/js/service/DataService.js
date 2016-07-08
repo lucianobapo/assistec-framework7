@@ -20,15 +20,15 @@ MyApp.angular.factory('DataService', ['$document', '$http', function ($document,
     }
 
     pub.getCities = function () {
-        return sendHttp('http://localhost:8080/cidade');
+        return sendHttp('http://assistec.ilhanet.com/cidade');
     };
 
     pub.getStates = function () {
-        return sendHttp('http://localhost:8080/estado');
+        return sendHttp('http://assistec.ilhanet.com/estado');
     };
 
     pub.getSupports = function () {
-        return sendHttp('http://localhost:8080/servico');
+        return sendHttp('http://assistec.ilhanet.com/servico');
     };
 
     pub.addEventListener = function (eventName, listener) {

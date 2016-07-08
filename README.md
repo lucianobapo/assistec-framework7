@@ -1,6 +1,6 @@
 Blank Intel XDK and Apache Cordova Project
 ==========================================
-
+php -Slocalhost:8000 -twww
 See [LICENSE.md](<LICENSE.md>) for license terms and conditions.
 
 Project File Information
