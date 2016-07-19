@@ -2,21 +2,24 @@
 /*global console, MyApp*/
 
 MyApp.angular.controller('BuscarAssistenciaPageController', [
-	'$scope', '$http', 'InitService', 'DataService',
-	function ($scope, $http, InitService, DataService) {
+	'$scope', '$http', 'InitService', 'DataService', '$rootScope',
+	function ($scope, $http, InitService, DataService, $rootScope) {
 		'use strict';
+
+		//$rootScope.selectedEstado = 'a';
+		//$rootScope.selectedCidade = 'a';
 
 		InitService.addEventListener('ready', function () {
 			// DOM ready
 			console.log('BuscarAssistenciaPageController: ok, DOM ready');
 
-			DataService.getCities().then(function successResponse(result){
-				console.debug('Success:', result);
-				$scope.cities = result.data;
-			}, function errorResponse(err){
-				console.error('Request Error', err);
-				console.log(err);
-			});
+			//DataService.getCities().then(function successResponse(result){
+			//	console.debug('Success:', result);
+			//	$scope.cities = result.data;
+			//}, function errorResponse(err){
+			//	console.error('Request Error', err);
+			//	console.log(err);
+			//});
 
 			DataService.getStates().then(function successResponse(result){
 				console.debug('Success:', result);
@@ -31,6 +34,23 @@ MyApp.angular.controller('BuscarAssistenciaPageController', [
 
 			// And you can access Framework7 like this:
 			// MyApp.fw7.app
-		});  
+		});
+
+		$scope.$watch(function(){
+			return $scope.selectedEstado;
+		}, function(newValue, oldValue) {
+			console.log(oldValue, newValue);
+			if (newValue!=oldValue)
+				$rootScope.selectedEstado = newValue;
+		});
+		$scope.$watch(function(){
+			return $scope.selectedCidade;
+		}, function(newValue, oldValue) {
+			console.log(oldValue, newValue);
+			if (newValue!=oldValue)
+				$rootScope.selectedCidade = newValue;
+		});
+
+
 	}
 ]);

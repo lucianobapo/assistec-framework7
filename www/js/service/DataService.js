@@ -30,8 +30,9 @@ MyApp.angular.factory('DataService', ['$document', '$http', function ($document,
         return sendHttp(urlBase+'/estado');
     };
 
-    pub.getSupports = function () {
-        return sendHttp(urlBase+'/servico');
+    pub.getSupports = function (params) {
+        if (!params) params='';
+        return sendHttp(urlBase+'/servico'+params);
     };
 
     pub.addEventListener = function (eventName, listener) {

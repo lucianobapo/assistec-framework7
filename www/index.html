@@ -102,7 +102,7 @@
 			
 			<!-- Page 2 -->
             <div data-page="buscar-assistencia" class="page cached" ng-controller="BuscarAssistenciaPageController">
-                <div class="page-content" id="">
+                <div class="page-content" id="fundo-principal">
                     <!-- não mudar daqui pra cima -->
                     <div class="list-block">
                         <div class="row no-gutter">
@@ -113,19 +113,18 @@
                                         <!-- Smart select, will be opened in Popup -->
                                         <a href="#" class="item-link smart-select" data-open-in="popup"
                                            data-back-on-select="true">
-                                            <select name="Estado">
-                                                <option>Escolha seu estado</option>
+                                            <select name="Estado" ng-model="selectedEstado">
                                                 <option ng-repeat="state in states" value="{{state.estado}}">{{state.estado}}</option>
                                             </select>
 
                                             <div class="item-content">
                                                 <div class="item-inner">
                                                     <!-- Select label -->
-                                                    <div class="item-title"><i
-                                                            class="icon ion-android-checkmark-circle texto-verde fonte-30"></i>
+                                                    <div class="item-title" style="color: black">
+                                                        <i class="icon ion-android-checkmark-circle texto-verde fonte-30"></i> Estado:
                                                     </div>
                                                     <!-- Selected value, not required -->
-                                                    <div class="item-after">Apple</div>
+                                                    <!--<div class="item-after">AL</div>-->
                                                 </div>
                                             </div>
                                         </a>
@@ -136,37 +135,37 @@
                         </div>
                     </div>
 
-                    <div class="list-block">
-                        <div class="row no-gutter">
-                            <div class="col-10"></div>
-                            <div class="col-80">
-                                <ul class="estilo-select">
-                                    <li>
-                                        <!-- Smart select, will be opened in Popup with custom "Close" text -->
-                                        <a href="#" class="item-link smart-select" data-open-in="popup"
-                                           data-back-on-select="true">
-                                            <select name="Cidade">
-                                                <option>Escolha sua cidade</option>
-                                                <option ng-repeat="city in cities" value="{{city.cidade}}">{{city.cidade}}</option>
-                                            </select>
+                    <!--<div class="list-block">-->
+                        <!--<div class="row no-gutter">-->
+                            <!--<div class="col-10"></div>-->
+                            <!--<div class="col-80">-->
+                                <!--<ul class="estilo-select">-->
+                                    <!--<li>-->
+                                        <!--&lt;!&ndash; Smart select, will be opened in Popup with custom "Close" text &ndash;&gt;-->
+                                        <!--<a href="#" class="item-link smart-select" data-open-in="popup"-->
+                                           <!--data-back-on-select="true">-->
 
-                                            <div class="item-content">
-                                                <div class="item-inner">
-                                                    <!-- Select label -->
-                                                    <div class="item-title"><i
-                                                            class="icon ion-android-checkmark-circle texto-verde fonte-30"></i>
-                                                    </div>
-                                                    <!-- Selected value, not required -->
-                                                    <div class="item-after">Apple</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-10"></div>
-                        </div>
-                    </div>
+                                            <!--<select name="Cidade" ng-model="selectedCidade">-->
+                                                <!--<option ng-repeat="city in cities" value="{{city.cidade}}">{{city.cidade}}</option>-->
+                                            <!--</select>-->
+
+                                            <!--<div class="item-content">-->
+                                                <!--<div class="item-inner">-->
+                                                    <!--&lt;!&ndash; Select label &ndash;&gt;-->
+                                                    <!--<div class="item-title"><i-->
+                                                            <!--class="icon ion-android-checkmark-circle texto-verde fonte-30"></i>-->
+                                                    <!--</div>-->
+                                                    <!--&lt;!&ndash; Selected value, not required &ndash;&gt;-->
+                                                    <!--<div class="item-after">Apple</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                            <!--<div class="col-10"></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
                     <div class="content-block">
                         <div class="row">
@@ -181,7 +180,7 @@
 
             <!-- Page 3 -->
             <div data-page="lista-de-assistencia" class="page cached" ng-controller="ListaAssistenciaPageController">
-                <div class="page-content" id="">
+                <div class="page-content" id="fundo-principal">
                     <!-- Search Bar with "searchbar-init" class for auto initialization -->
                     <form class="searchbar searchbar-init" data-search-list=".list-block-search" data-search-in=".item-title"
                           data-found=".searchbar-found" data-not-found=".searchbar-not-found">
@@ -198,7 +197,8 @@
                         Nenhuma assistência foi encontrada!
                     </div>
                     <!-- inicio bloco de anunciantes -->
-                    <div class="list-block list-block-search searchbar-found media-list inset">
+
+                    <!--<div class="list-block list-block-search searchbar-found media-list inset">
                         <ul class="espaco-entre-listas">
                             <li>
                                 <a href="assistencia-escolhida.html" class="item-link item-content">
@@ -229,7 +229,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div>-->
                     <!-- FIM bloco de anunciantes -->
                     <!-- inicio bloco de NÃO anunciantes -->
                     <div class="list-block list-block-search searchbar-found media-list inset">
@@ -241,7 +241,7 @@
                                             <div class="item-title cor-titulo"><b>{{ support.nome }}</b></div>
                                         </div>
                                         <div class="item-subtitle item-descricao">{{ support.descricao }}</div>
-                                        <div class="item-title item-descricao">Bairro: {{ support.bairro }}</div>
+                                        <div class="item-title item-descricao">Bairro: {{ support.bairro }} / Cidade: {{ support.cidade }} / Estado: {{ support.estado }}</div>
                                     </div>
                                 </a>
                             </li>
