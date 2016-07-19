@@ -12,7 +12,7 @@ MyApp.angular.controller('BuscarAssistenciaPageController', [
 
 			DataService.getCities().then(function successResponse(result){
 				console.debug('Success:', result);
-				$scope.cities = result.data._embedded.cidade;
+				$scope.cities = result.data;
 			}, function errorResponse(err){
 				console.error('Request Error', err);
 				console.log(err);
@@ -20,7 +20,7 @@ MyApp.angular.controller('BuscarAssistenciaPageController', [
 
 			DataService.getStates().then(function successResponse(result){
 				console.debug('Success:', result);
-				$scope.states = result.data._embedded.estado;
+				$scope.states = result.data;
 			}, function errorResponse(err){
 				console.error('Request Error', err);
 				console.log(err);

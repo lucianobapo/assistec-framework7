@@ -7,6 +7,9 @@ MyApp.angular.factory('DataService', ['$document', '$http', function ($document,
     var pub = {};
     var eventListeners = {'ready': []};
 
+    //var urlBase = 'http://assistec.ilhanet.com';
+    var urlBase = 'http://localhost:8888';
+
     function sendHttp(url){
         var params = {
             headers: {
@@ -20,15 +23,15 @@ MyApp.angular.factory('DataService', ['$document', '$http', function ($document,
     }
 
     pub.getCities = function () {
-        return sendHttp('http://assistec.ilhanet.com/cidade');
+        return sendHttp(urlBase+'/cidade');
     };
 
     pub.getStates = function () {
-        return sendHttp('http://assistec.ilhanet.com/estado');
+        return sendHttp(urlBase+'/estado');
     };
 
     pub.getSupports = function () {
-        return sendHttp('http://assistec.ilhanet.com/servico');
+        return sendHttp(urlBase+'/servico');
     };
 
     pub.addEventListener = function (eventName, listener) {
