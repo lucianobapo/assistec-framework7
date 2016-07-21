@@ -198,38 +198,22 @@
                     </div>
                     <!-- inicio bloco de anunciantes -->
 
-                    <!--<div class="list-block list-block-search searchbar-found media-list inset">
+                    <div class="list-block list-block-search searchbar-found media-list inset">
                         <ul class="espaco-entre-listas">
-                            <li>
+                            <li ng-repeat="support in paidSupports">
                                 <a href="assistencia-escolhida.html" class="item-link item-content">
                                     <div class="item-media"><img src="img/anunciantes/assistec.png" width="44"></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
-                                            <div class="item-title cor-titulo"><b>Assistec - Assistência técnica sp</b></div>
+                                            <div class="item-title cor-titulo"><b>{{ support.nome }}</b></div>
                                         </div>
-                                        <div class="item-subtitle item-descricao">Assistência para computadores e celulares
-                                        </div>
-                                        <div class="item-title item-descricao">Bairro: Vila Cardim</div>
+                                        <div class="item-subtitle item-descricao">{{ support.descricao }}</div>
+                                        <div class="item-title item-descricao">Bairro: {{ support.bairro }}</div>
                                     </div>
                                 </a>
                             </li>
                         </ul>
-                        <ul class="espaco-entre-listas">
-                            <li>
-                                <a href="assistencia-escolhida.html" class="item-link item-content">
-                                    <div class="item-media"><img src="img/anunciantes/assistencia.jpg" width="44"></div>
-                                    <div class="item-inner">
-                                        <div class="item-title-row">
-                                            <div class="item-title cor-titulo"><b>Arruma já - Autorizada RJ</b></div>
-                                        </div>
-                                        <div class="item-subtitle item-descricao">Assistência para computadores e celulares
-                                        </div>
-                                        <div class="item-title item-descricao">Bairro: Niteroi</div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>-->
+                    </div>
                     <!-- FIM bloco de anunciantes -->
                     <!-- inicio bloco de NÃO anunciantes -->
                     <div class="list-block list-block-search searchbar-found media-list inset">

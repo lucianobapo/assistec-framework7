@@ -4,19 +4,18 @@
 // Init angular
 var MyApp = {};
 
-MyApp.config = {
-};
+MyApp.config = {};
 
 MyApp.angular = angular.module('MyApp', []);
 
 MyApp.fw7 = {
-  app : new Framework7({
+    app: new Framework7({
 //	  domCache: true,
-	  sanimateNavBackIcon: true
-  }),
-  options : {
-    dynamicNavbar: true,
-    domCache: true
-  },
-  views : []
+        sanimateNavBackIcon: true
+    }),
+    options: {
+        dynamicNavbar: true,
+        domCache: true
+    },
+    views: []
 };

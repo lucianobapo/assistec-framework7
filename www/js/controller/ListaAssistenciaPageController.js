@@ -6,13 +6,23 @@ MyApp.angular.controller('ListaAssistenciaPageController', [
     function ($scope, $http, InitService, DataService, $rootScope) {
         'use strict';
 
+        $scope.attribData = function (result){
+            console.debug('Success:', result);
+            //$scope.supports = result.data._embedded.servico;
+            $scope.supports = [];
+            $scope.paidSupports = [];
+            result.data._embedded.servico.forEach(function(item){
+                if (item.perfil=="patrocinado") $scope.paidSupports.push(item);
+                if (item.perfil!="patrocinado") $scope.supports.push(item);
+            });
+        };
+
         InitService.addEventListener('ready', function () {
             // DOM ready
             console.log('ListaAssistenciaPageController: ok, DOM ready');
 
             DataService.getSupports().then(function successResponse(result){
-                console.debug('Success:', result);
-                $scope.supports = result.data._embedded.servico;
+                $scope.attribData(result);
             }, function errorResponse(err){
                 console.error('Request Error', err);
                 console.log(err);
@@ -28,27 +38,25 @@ MyApp.angular.controller('ListaAssistenciaPageController', [
         $scope.$watch(function(){
             return $rootScope.selectedEstado;
         }, function(newValue, oldValue) {
-            if ((newValue!=oldValue) && ($scope.supports.length>0)){
-                //console.log($scope.supports);
-                DataService.getSupports("?where=estado LIKE '"+newValue+"'").then(function successResponse(result){
-                    console.debug('Success:', result);
-                    $scope.supports = result.data._embedded.servico;
-                }, function errorResponse(err){
-                    console.error('Request Error', err);
-                    console.log(err);
-                });
+            if (newValue!=oldValue){
+                if (newValue.length>0){
+                    DataService.getSupports("?where=estado LIKE '"+newValue+"'").then(function successResponse(result){
+                        $scope.attribData(result);
+                    }, function errorResponse(err){
+                        console.error('Request Error', err);
+                        console.log(err);
+                    });
+                }
             }
         });
 
         $scope.$watch(function(){
             return $rootScope.selectedCidade;
         }, function(newValue, oldValue) {
-            if ((newValue!=oldValue) && ($scope.supports.length>0)){
+            if (newValue!=oldValue){
                 if (newValue.length>0 && $rootScope.selectedEstado.length>0){
-                    //console.log($scope.supports);
                     DataService.getSupports("?where=estado LIKE '"+$rootScope.selectedEstado+"' AND cidade LIKE '"+newValue+"'").then(function successResponse(result){
-                        console.debug('Success:', result);
-                        $scope.supports = result.data._embedded.servico;
+                        $scope.attribData(result);
                     }, function errorResponse(err){
                         console.error('Request Error', err);
                         console.log(err);
