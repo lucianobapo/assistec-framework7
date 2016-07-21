@@ -37,16 +37,23 @@ MyApp.angular.controller('ListaAssistenciaPageController', [
                     console.error('Request Error', err);
                     console.log(err);
                 });
+            }
+        });
 
-                //var aux = [];
-                //$scope.supports.forEach(function(item){
-                //    console.log(item.estado);
-                //    if (item.estado==newValue) {
-                //        console.log(item);
-                //        aux.push(item);
-                //    }
-                //});
-                //$scope.supports = aux;
+        $scope.$watch(function(){
+            return $rootScope.selectedCidade;
+        }, function(newValue, oldValue) {
+            if ((newValue!=oldValue) && ($scope.supports.length>0)){
+                if (newValue.length>0 && $rootScope.selectedEstado.length>0){
+                    //console.log($scope.supports);
+                    DataService.getSupports("?where=estado LIKE '"+$rootScope.selectedEstado+"' AND cidade LIKE '"+newValue+"'").then(function successResponse(result){
+                        console.debug('Success:', result);
+                        $scope.supports = result.data._embedded.servico;
+                    }, function errorResponse(err){
+                        console.error('Request Error', err);
+                        console.log(err);
+                    });
+                }
             }
         });
     }

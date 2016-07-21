@@ -40,15 +40,28 @@ MyApp.angular.controller('BuscarAssistenciaPageController', [
 			return $scope.selectedEstado;
 		}, function(newValue, oldValue) {
 			console.log(oldValue, newValue);
-			if (newValue!=oldValue)
-				$rootScope.selectedEstado = newValue;
+			if (newValue!=oldValue){
+                if (newValue.length>0){
+                    $rootScope.selectedEstado = newValue;
+
+                    DataService.getCities('/'+newValue).then(function successResponse(result){
+                        console.debug('Success:', result);
+                        $scope.cities = result.data;
+                    }, function errorResponse(err){
+                        console.error('Request Error', err);
+                        console.log(err);
+                    });
+                }
+            }
 		});
 		$scope.$watch(function(){
 			return $scope.selectedCidade;
 		}, function(newValue, oldValue) {
 			console.log(oldValue, newValue);
-			if (newValue!=oldValue)
+			if (newValue!=oldValue){
 				$rootScope.selectedCidade = newValue;
+
+			}
 		});
 
 

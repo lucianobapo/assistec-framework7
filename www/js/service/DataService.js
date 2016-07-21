@@ -22,8 +22,9 @@ MyApp.angular.factory('DataService', ['$document', '$http', function ($document,
         return $http(params);
     }
 
-    pub.getCities = function () {
-        return sendHttp(urlBase+'/cidade');
+    pub.getCities = function (params) {
+        if (!params) params='';
+        return sendHttp(urlBase+'/cidade'+params);
     };
 
     pub.getStates = function () {
