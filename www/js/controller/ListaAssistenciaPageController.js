@@ -6,6 +6,12 @@ MyApp.angular.controller('ListaAssistenciaPageController', [
     function ($scope, $http, InitService, DataService, $rootScope) {
         'use strict';
 
+        $scope.selectSupport = function (id){
+            $scope.supports.forEach(function(item){
+                if (item.id==id) $rootScope.supportSelected = item;
+            });
+        };
+
         $scope.attribData = function (result){
             console.debug('Success:', result);
             //$scope.supports = result.data._embedded.servico;

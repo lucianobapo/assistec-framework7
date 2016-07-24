@@ -201,7 +201,7 @@
                     <div class="list-block list-block-search searchbar-found media-list inset">
                         <ul class="espaco-entre-listas">
                             <li ng-repeat="support in paidSupports">
-                                <a href="assistencia-escolhida.html" class="item-link item-content">
+                                <a href="#assistencia-escolhida" ng-click="selectSupport(support.id)" class="item-link item-content">
                                     <div class="item-media"><img src="img/anunciantes/assistec.png" width="44"></div>
                                     <div class="item-inner">
                                         <div class="item-title-row">
@@ -219,7 +219,7 @@
                     <div class="list-block list-block-search searchbar-found media-list inset">
                         <ul>
                             <li ng-repeat="support in supports">
-                                <a href="assistencia-escolhida.html" class="item-link item-content">
+                                <a href="#assistencia-escolhida" ng-click="selectSupport(support.id)" class="item-link item-content">
                                     <div class="item-inner">
                                         <div class="item-title-row">
                                             <div class="item-title cor-titulo"><b>{{ support.nome }}</b></div>
@@ -245,7 +245,8 @@
                         <div class="content-block-inner">
                             <div class="row no-gutter">
                                 <div class="col-75">
-                                    <h3>João Assistência Técnica São Paulo</h3>
+                                    <h3>{{ supportSelected.nome }}</h3>
+                                    <h3>{{ supportSelected.cidade }}</h3>
                                 </div>
                                 <div class="col-25">
                                     <img src="img/anunciantes/assistec.png" width="90%">
@@ -260,8 +261,7 @@
                                                 <div class="item-title-row">
                                                     <div class="texto-descricao">Descrição:</div>
                                                 </div>
-                                                <div class="item-subtitle quebra-linha">Assistência técnica para computadores
-                                                </div>
+                                                <div class="item-subtitle quebra-linha">{{ supportSelected.descricao }}</div>
                                             </div>
                                         </div>
                                     </li>
@@ -272,8 +272,9 @@
                                                 <div class="item-title-row">
                                                     <div class="texto-descricao">Endereço:</div>
                                                 </div>
-                                                <div class="item-subtitle quebra-linha">Av. Antonio Silva de Oliveira Néto, 255,
-                                                    São José, Matão - SP
+                                                <div class="item-subtitle quebra-linha">
+                                                    {{ supportSelected.endereco }},
+                                                    {{ supportSelected.bairro }}, {{ supportSelected.cidade }} - {{ supportSelected.estado }}
                                                 </div>
                                             </div>
                                         </div>
@@ -285,7 +286,7 @@
                                                 <div class="item-title-row">
                                                     <div class="texto-descricao">Telefone</div>
                                                 </div>
-                                                <div class="item-subtitle quebra-linha">(16) 9.9730-881 / (16) 3506-1889</div>
+                                                <div class="item-subtitle quebra-linha">{{ supportSelected.telefone }}</div>
                                             </div>
                                         </div>
                                     </li>
