@@ -8,7 +8,17 @@ MyApp.angular.controller('ListaAssistenciaPageController', [
 
         $scope.selectSupport = function (id){
             $scope.supports.forEach(function(item){
-                if (item.id==id) $rootScope.supportSelected = item;
+                if (item.id==id) {
+                    console.log(item);
+                    $rootScope.supportSelected = item;
+                }
+            });
+
+            $scope.paidSupports.forEach(function(item){
+                if (item.id==id) {
+                    console.log(item);
+                    $rootScope.supportSelected = item;
+                }
             });
         };
 
