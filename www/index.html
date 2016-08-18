@@ -63,6 +63,11 @@
                 <div class="center sliding">
 					<a href="index.html" class="texto-branco">Reclamações</a>
 				</div>
+                <div class="right">
+                    <a href="#" class="back link">
+                        <i class="icon icon-back"></i><span>Voltar</span></a>
+                    </a>
+                </div>
             </div>
         </div>
 		
@@ -292,14 +297,19 @@
                                     </li>
                                 </ul>
                             </div>
-                            <p class="buttons-row theme-pink">
-                                <a href="#" class="button active btn-social"><span
-                                        class="ion-android-globe fonte-25"></span></a>
-                                <a href="#" class="button btn-social"><span
-                                        class="ion-social-facebook texto-verde fonte-25"></span></a>
-                                <a href="#" class="button btn-social"><span
-                                        class="ion-social-whatsapp texto-verde fonte-25"></span></a>
-                                <a href="#" class="button btn-social"><span class="ion-email texto-verde fonte-30"></span></a>
+                            <p class="buttons-row theme-pink" ng-show="supportSelected.perfil=='patrocinado'">
+                                <a href="{{ supportSelected.site }}" class="button active btn-social">
+                                    <span class="ion-android-globe fonte-25"></span>
+                                </a>
+                                <a href="#" class="button btn-social">
+                                    <span class="ion-social-facebook texto-verde fonte-25"></span>
+                                </a>
+                                <a href="#" class="button btn-social">
+                                    <span class="ion-social-whatsapp texto-verde fonte-25"></span>
+                                </a>
+                                <a href="mailto:{{ supportSelected.email }}" class="button btn-social">
+                                    <span class="ion-email texto-verde fonte-30"></span>
+                                </a>
                             </p>
                         </div>
 
@@ -323,16 +333,17 @@
 <!-- Inicio MENU -->
 <div class="popup tablet-fullscreen fundo-menu" id="menu-principal">
     <div class="content-block">
-        <div class="btn-fechar-menu"><a href="#" class="close-popup texto-branco"><i class="ion-ios-close-outline"></i></a>
+        <div class="btn-fechar-menu">
+            <a href="#" class="close-popup texto-branco"><i class="ion-ios-close-outline"></i></a>
         </div>
         <div class="row linha-menu">
             <div class="col-50 nome-menu">
-				<a href="buscar-assistencia.html" class="close-popup">
+				<a href="#buscar-assistencia" class="close-popup">
 					<i class="ion-ios-search fonte-60"></i><br>Buscar Assistência
 				</a>
 			</div>
             <div class="col-50 nome-menu">
-				<a href="lista-de-assistencia.html" class="close-popup">
+				<a href="#lista-de-assistencia" class="close-popup">
 					<i class="ion-ios-telephone-outline fonte-60"></i><br>Fale com o fabricante
 				</a>
 			</div>
