@@ -7,8 +7,8 @@ MyApp.angular.factory('DataService', ['$document', '$http', function ($document,
     var pub = {};
     var eventListeners = {'ready': []};
 
-    var urlBase = 'http://guiaassistenciatecnica.com/assistec-apigility/public';
-    //var urlBase = 'http://assistec.ilhanet.com';
+    // var urlBase = 'http://guiaassistenciatecnica.com/assistec-apigility/public';
+    var urlBase = 'http://assistec.ilhanet.com';
     //var urlBase = 'http://localhost:8888';
 
     function sendHttp(url){
